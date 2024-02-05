@@ -1,0 +1,11 @@
+@font-face {
+    font-family: compSciFont;
+    src: url(fonts\Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf) format('truetype');
+}
+
+body {
+    font-family: compSciFont;
+}
+h1 {
+    
+}
