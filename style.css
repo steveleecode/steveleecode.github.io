@@ -1,11 +1,21 @@
 @font-face {
     font-family: compSciFont;
-    src: url(fonts\Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf) format('truetype');
+    src: url(fonts/Sixtyfour-Regular-VariableFont_BLED\,SCAN.ttf);
 }
 
 body {
-    font-family: compSciFont;
+    font-family:'Trebuchet MS';
 }
-h1 {
-    
+div {
+    outline: 5px solid black;
+    background: black;
+    text-align: center;
+    border-radius: 25px;
+    height: 100px;
+    vertical-align: middle;
+}
+#name {
+    font-family: compSciFont;
+    vertical-align: middle;
+    color: white;
 }
