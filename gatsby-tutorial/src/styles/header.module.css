@@ -1,0 +1,11 @@
+.header {
+    text-align: center; 
+    outline: solid black; 
+    background: black; 
+    border-radius: 20px; 
+    color: white; 
+    font-family: monospace; 
+    font-size: 2em; 
+    position: sticky; 
+}
+ 

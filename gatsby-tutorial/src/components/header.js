@@ -1,10 +1,11 @@
 // Step 1: Import React
 import * as React from 'react'
+import * as styles from '../styles/header.module.css'
 
 // Step 2: Define your component
 const Header = () => {
   return (
-    <main style={{ textAlign: "center", outline: "solid black", background: "black", borderRadius: "20px", color: "white", fontFamily: "monospace", fontSize: "2em" }}>
+    <main className={styles.header}>
         <h1>Steve Lee</h1> 
     </main>
   )
