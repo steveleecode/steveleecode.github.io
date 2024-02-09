@@ -3,8 +3,8 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Tutorial`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Steve Lee Portfolio`,
+    siteUrl: `ttps://steveleecode/steveleecode.github.io`
   },
   plugins: ["gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',
