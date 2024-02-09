@@ -4,6 +4,7 @@
   "private": true,
   "description": "gatsby-tutorial",
   "author": "Stephen",
+  "homepage": "https://steveleecode/steveleecode.github.io",
   "keywords": [
     "gatsby"
   ],
@@ -12,7 +13,8 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "deploy": "gatsby build && gh-pages -d public"
   },
   "dependencies": {
     "gatsby": "^5.13.2",
