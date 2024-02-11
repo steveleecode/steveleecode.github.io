@@ -17,7 +17,7 @@
     "deploy": "gatsby build && gh-pages -d public -b main"
   },
   "dependencies": {
-    "gatsby": "^5.13.2",
+    "gatsby": "^5.13.3",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-source-filesystem": "^5.13.1",

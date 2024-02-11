@@ -5,9 +5,18 @@ import * as styles from '../styles/header.module.css'
 // Step 2: Define your component
 const Header = () => {
   return (
-    <main className={styles.header}>
-        <h1>Steve Lee</h1> 
-    </main>
+    <ul className={styles.header}>
+        <div className ={styles.headerContent}>
+          <li className={styles.mainHeader}>
+            <a className = {styles.headerLink}  href="/">Steve Lee</a>
+          </li>
+          <li className={styles.headerLeft}>
+            <div className={styles.headerButton}>
+              <a className = {styles.headerLink} href="/about" >About</a>
+            </div> 
+          </li>
+        </div>
+    </ul>
   )
 }
 
