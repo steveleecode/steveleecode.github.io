@@ -6,16 +6,17 @@ import * as styles from '../styles/header.module.css'
 const Header = () => {
   return (
     <ul className={styles.header}>
-        <div className ={styles.headerContent}>
-          <li className={styles.mainHeader}>
-            <a className = {styles.headerLink}  href="/">Steve Lee</a>
-          </li>
-          <li className={styles.headerLeft}>
-            <div className={styles.headerButton}>
-              <a className = {styles.headerLink} href="/about" >About</a>
-            </div> 
-          </li>
-        </div>
+      <li className={styles.mainHeader}>
+        <a className = {styles.mainHeaderLink}  href="/">Steve Lee</a>
+      </li>
+      <li className={styles.headerRight}>
+        <div className={styles.headerButton}>
+          <a className = {styles.headerLink} href="/about" >About</a>
+        </div> 
+        <div className={styles.headerButton}>
+          <a className = {styles.headerLink} href="/portfolio" >Projects</a>
+        </div> 
+      </li>
     </ul>
   )
 }

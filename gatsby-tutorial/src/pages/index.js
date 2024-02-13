@@ -56,6 +56,7 @@ const links = [
 const IndexPage = () => {
   return (
     <Layout>
+      <h1>This is the Home Page</h1>
     </Layout>
   )
 }

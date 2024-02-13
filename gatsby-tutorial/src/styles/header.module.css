@@ -2,25 +2,41 @@
     text-align: center; 
     outline: solid black; 
     background: black; 
-    border-radius: 20px; 
     color: white; 
     font-family: monospace; 
     font-size: 2em; 
-    position: sticky; 
+    position:relative; 
+    padding:0;
     list-style: none;
+    display:flex;
+    justify-content:space-between;
+    min-height:fit-content;
+    margin-top: -6px;
+    margin-left: -6px;
+    margin-right:-6px;
+    top:0px;
+    height:10vh;
+    
 }
 .headerButton {
+    text-align:center;
     position: relative;
-    padding-top:2.5px;
-    padding-bottom: 2.5px;
+    padding-top:5px;
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 5px;
     text-decoration: none;
     color: white;
     display: inline-block;
     list-style: none;
     justify-content: flex-start;
-    vertical-align: middle;
+    vertical-align: middle; 
+    font-size:20px;
+    margin: 0px 0.25vw;
+   
+
+
+    /*Hover Effect */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -32,8 +48,7 @@
     -webkit-transition-property: box-shadow;
     transition-property: box-shadow;
     box-shadow: inset 0 0 0 4px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
-
-
+    /*End of Hover Effect */
 }
 
 
@@ -41,20 +56,44 @@
     box-shadow: inset 0 0 0 4px grey, 0 0 1px rgba(0, 0, 0, 0);
     /* Hack to improve aliasing on mobile/tablet devices */
 }
-.headerLeft {
+.headerRight {
     display: flex;
-    width:200px;
+    margin-right: 10px;
+    justify-content:center;
+    vertical-align:center;
+    align-items:center;
+
 }
 .headerLink {
     text-decoration: none;
     color: white;
+    margin-bottom: -20px;
+    vertical-align:center;
+    height:min-content;
+}
+li {
+    float: left;
 }
 .mainHeader {
     position:relative;
-    padding-left:45%;
-    width:150px;
-
+    display: flex;
+    font-size: 40px;
+    text-align:center;
+    padding-top: 7.5px;
+    margin-left: 10px;
     
+}
+
+.mainHeaderLink {
+    text-decoration: none;
+    color: white;
+    margin-bottom: -20px;
+    vertical-align:center;
+    height:min-content;
+}
+
+.mainHeaderLink:hover {
+    color:grey;
 }
 
  
