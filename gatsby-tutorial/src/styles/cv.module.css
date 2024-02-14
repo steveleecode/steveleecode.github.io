@@ -68,6 +68,10 @@ hr {
     color: blue;
 }
 
+.timeInstanceListLabel {
+    margin-bottom: 10px;
+}
+
 .cardContent ul li {
     float:none;
 }

@@ -13,5 +13,5 @@ const PortfolioPage = () => {
 
 export default PortfolioPage
 
-export const Head = () => <title>Steve Lee</title>
+export const Head = () => <title>Steve Lee - Projects</title>
 

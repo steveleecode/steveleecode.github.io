@@ -24,14 +24,14 @@ const CVPage = () => {
                                         <td className={cv.cardLabel}> 
                                             <b>Role</b> 
                                         </td> 
-                                        <td className={cv.cardKey}> Student at Eastlake High School C/O 2026 </td> 
+                                        <td className={cv.cardKey}> Student at Eastlake High School - C/O 2026 </td> 
                                     </tr> 
                                     <tr> 
                                         <td className={cv.cardLabel}> 
                                             <b>Email</b> 
                                         </td> 
                                         <td className={cv.cardKey}> 
-                                            <a href="mailto:stevelee_2008@outlook.com" target="_blank">stevelee_2008@outlook.come</a> 
+                                            <a href="mailto:stevelee_2008@outlook.com" target="_blank">stevelee_2008@outlook.com</a> 
                                         </td> 
                                     </tr> 
                                     <tr> 
@@ -67,7 +67,7 @@ const CVPage = () => {
                                                 <a href="https://mightycoders.io/" rel="external nofollow noopener" target="_blank">Youth Coding Volunteer</a> 
                                             </h6> 
                                             <h6 className={cv.timeInstanceContent} >Mighty Coders</h6> 
-                                            <h6 className={cv.timeInstanceContent} >Led coding bootcamps to teach in-need youth coding skills such as</h6> 
+                                            <h6 className={cv.timeInstanceListLabel} >Led coding bootcamps to teach in-need youth coding skills such as</h6> 
                                             <ul className={cv.timeInstanceList}> 
                                                 <li className={cv.timeInstanceBullets}> 
                                                     Scratch
@@ -139,4 +139,4 @@ const CVPage = () => {
 
 export default CVPage
 
-export const Head = () => <title>Steve Lee</title>
+export const Head = () => <title>Steve Lee - CV</title>
