@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "react-sticky": "^6.0.3"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.1.1"
-  }
-
-}
