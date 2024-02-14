@@ -7,14 +7,17 @@ const Header = () => {
   return (
     <ul className={styles.header}>
       <li className={styles.mainHeader}>
-        <a className = {styles.mainHeaderLink}  href="/">Steve Lee</a>
+        <a className = {styles.mainHeaderLink}  href="/">Stephen Lee</a>
       </li>
       <li className={styles.headerRight}>
         <div className={styles.headerButton}>
-          <a className = {styles.headerLink} href="/about" >About</a>
+          <a className = {styles.headerLink} href="/comingSoon" >Projects</a>
         </div> 
         <div className={styles.headerButton}>
-          <a className = {styles.headerLink} href="/portfolio" >Projects</a>
+          <a className = {styles.headerLink} href="/repos" >Repositories</a>
+        </div> 
+        <div className={styles.headerButton}>
+          <a className = {styles.headerLink} href="/cv" >CV</a>
         </div> 
       </li>
     </ul>

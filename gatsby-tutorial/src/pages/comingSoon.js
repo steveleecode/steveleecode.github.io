@@ -6,9 +6,7 @@ const AboutPage = () => {
   return (
     <Layout>
         <div class="AboutPage">
-          <img src={headshot} width="100" height = "100" alt="Photo of Me" />
-          <h1>Stephen Lee</h1>
-          <b1>Eastlake High School - Class of 2026</b1>
+          <h1>Page Coming Soon (Go check out <i>Repositories</i> or <i>CV</i>)</h1>
         </div>
     </Layout>
   )

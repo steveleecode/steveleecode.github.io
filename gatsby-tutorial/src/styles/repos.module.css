@@ -1,0 +1,23 @@
+.post {
+    max-width: 100vh;
+    margin:auto;
+}
+
+.repositories {
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+    justify-content: space-between;
+    box-sizing: border-box;
+    max-width: 85vh !important;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.repoHeader {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    text-align: center;
+}

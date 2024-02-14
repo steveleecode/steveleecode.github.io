@@ -79,7 +79,7 @@ li {
     display: flex;
     font-size: 40px;
     text-align:center;
-    padding-top: 7.5px;
+    padding-top: 25px;
     margin-left: 10px;
     
 }
@@ -90,6 +90,7 @@ li {
     margin-bottom: -20px;
     vertical-align:center;
     height:min-content;
+
 }
 
 .mainHeaderLink:hover {
