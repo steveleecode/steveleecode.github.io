@@ -4,12 +4,17 @@
 }
 
 .repositories {
-    display: flex;
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4;
     flex-direction: row;
     margin:auto;
     justify-content: space-between;
     box-sizing: border-box;
     max-width: 85vh !important;
+    grid-template-columns: 50% 50%;
 }
 
 hr {
