@@ -21,6 +21,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^4.3.0",
     "autoprefixer": "^10.4.17",
     "gatsby": "^5.14.3",
     "gatsby-plugin-image": "^3.14.0",
