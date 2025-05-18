@@ -1,7 +1,196 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/layout';
 import { projects } from '../data/projects';
 import { getTopProjects } from '../utils/projectScorer';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+
+// TypeScript interfaces
+interface PersonalInfo {
+  name: string;
+  title: string;
+  email: string;
+  phone: string;
+  location: string;
+  summary: string;
+}
+
+interface Experience {
+  role: string;
+  organization: string;
+  period: string;
+  location: string;
+  type: string;
+  description: string;
+  achievements?: string[];
+  technologies: string[];
+  link?: string;
+}
+
+interface Education {
+  school: string;
+  degree: string;
+  period: string;
+  location: string;
+  type: string;
+  gpa?: string;
+  activities?: string[];
+  achievements?: string[];
+}
+
+interface Award {
+  title: string;
+  issuer: string;
+  date: string;
+  description?: string;
+}
+
+interface Skills {
+  [key: string]: string[];
+}
+
+interface CVPDFProps {
+  personalInfo: PersonalInfo;
+  skills: Skills;
+  experience: Experience[];
+  education: Education[];
+  awards: Award[];
+}
+
+// PDF Styles
+const styles = StyleSheet.create({
+  page: {
+    padding: 30,
+    backgroundColor: '#ffffff',
+  },
+  header: {
+    marginBottom: 20,
+  },
+  name: {
+    fontSize: 24,
+    marginBottom: 5,
+    color: '#1a365d',
+  },
+  title: {
+    fontSize: 16,
+    color: '#4a5568',
+    marginBottom: 10,
+  },
+  section: {
+    marginBottom: 15,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    marginBottom: 10,
+    color: '#2d3748',
+    borderBottom: '1 solid #e2e8f0',
+    paddingBottom: 5,
+  },
+  subsection: {
+    marginBottom: 10,
+  },
+  text: {
+    fontSize: 12,
+    color: '#4a5568',
+    marginBottom: 5,
+  },
+  listItem: {
+    fontSize: 12,
+    color: '#4a5568',
+    marginBottom: 3,
+    marginLeft: 10,
+  },
+  contact: {
+    fontSize: 12,
+    color: '#4a5568',
+    marginBottom: 3,
+  },
+  skillTag: {
+    fontSize: 10,
+    color: '#4a5568',
+    backgroundColor: '#edf2f7',
+    padding: '2 5',
+    marginRight: 5,
+    marginBottom: 5,
+    borderRadius: 3,
+  },
+});
+
+// PDF Document Component
+const CVPDF: React.FC<CVPDFProps> = ({ personalInfo, skills, experience, education, awards }) => (
+  <Document>
+    <Page size="A4" style={styles.page}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.name}>{personalInfo.name}</Text>
+        <Text style={styles.title}>{personalInfo.title}</Text>
+        <Text style={styles.contact}>{personalInfo.email}</Text>
+        <Text style={styles.contact}>{personalInfo.phone}</Text>
+        <Text style={styles.contact}>{personalInfo.location}</Text>
+      </View>
+
+      {/* Summary */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Professional Summary</Text>
+        <Text style={styles.text}>{personalInfo.summary}</Text>
+      </View>
+
+      {/* Experience */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Experience</Text>
+        {experience.map((exp: Experience, index: number) => (
+          <View key={index} style={styles.subsection}>
+            <Text style={styles.text}>{exp.role} - {exp.organization}</Text>
+            <Text style={styles.text}>{exp.period} • {exp.location}</Text>
+            <Text style={styles.text}>{exp.description}</Text>
+            {exp.achievements && exp.achievements.map((achievement: string, i: number) => (
+              <Text key={i} style={styles.listItem}>• {achievement}</Text>
+            ))}
+          </View>
+        ))}
+      </View>
+
+      {/* Skills */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Skills</Text>
+        {Object.entries(skills).map(([category, items]: [string, string[]]) => (
+          <View key={category} style={styles.subsection}>
+            <Text style={styles.text}>{category}:</Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+              {items.map((skill: string, index: number) => (
+                <Text key={index} style={styles.skillTag}>{skill}</Text>
+              ))}
+            </View>
+          </View>
+        ))}
+      </View>
+
+      {/* Education */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Education</Text>
+        {education.map((edu: Education, index: number) => (
+          <View key={index} style={styles.subsection}>
+            <Text style={styles.text}>{edu.school}</Text>
+            <Text style={styles.text}>{edu.degree}</Text>
+            <Text style={styles.text}>{edu.period} • {edu.location}</Text>
+            {edu.gpa && <Text style={styles.text}>GPA: {edu.gpa}</Text>}
+          </View>
+        ))}
+      </View>
+
+      {/* Awards */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Awards & Recognition</Text>
+        {awards.map((award: Award, index: number) => (
+          <View key={index} style={styles.subsection}>
+            <Text style={styles.text}>{award.title}</Text>
+            <Text style={styles.text}>{award.issuer} • {award.date}</Text>
+            {award.description && <Text style={styles.text}>{award.description}</Text>}
+          </View>
+        ))}
+      </View>
+    </Page>
+  </Document>
+);
 
 // Spaceship Animation Component
 const SpaceshipAnimation = () => {
@@ -130,7 +319,7 @@ const CVPage = () => {
     },
     {
       role: 'Assistant Coding Mentor',
-      organization: 'Mighty Coders',
+    organization: 'Mighty Coders',
       period: 'Aug 2024 - Jan 2025',
       location: 'Sammamish, WA',
       type: 'Part-time',
@@ -262,17 +451,17 @@ const CVPage = () => {
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+                  </svg>
                 {personalInfo.location}
-              </span>
+                </span>
             </div>
-          </div>
+            </div>
 
           {/* Summary Section */}
           <div className="bg-white/10 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-white/20 dark:border-gray-700">
             <h2 className="text-2xl font-bold text-white mb-4">Professional Summary</h2>
             <p className="text-gray-300 leading-relaxed">{personalInfo.summary}</p>
-          </div>
+            </div>
 
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -281,7 +470,7 @@ const CVPage = () => {
               {/* Experience Section */}
               <div className="bg-white/10 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/20 dark:border-gray-700">
                 <h2 className="text-2xl font-bold text-white mb-6">Experience</h2>
-                <div className="space-y-8">
+                  <div className="space-y-8">
                   {experience.map((exp, index) => (
                     <div key={index} className="relative pl-8 border-l-2 border-primary-500">
                       <div className="absolute -left-[9px] top-0 w-4 h-4 bg-primary-500 rounded-full"></div>
@@ -444,24 +633,46 @@ const CVPage = () => {
                         <p className="text-gray-300 text-sm">{award.description}</p>
                       )}
                     </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
           {/* Download Button */}
           <div className="flex justify-center mt-12">
-            <a
-              href="/cv.pdf"
-              download
+            <PDFDownloadLink
+              document={
+                <CVPDF
+                  personalInfo={personalInfo}
+                  skills={skills}
+                  experience={experience}
+                  education={education}
+                  awards={awards}
+                />
+              }
+              fileName="Stephen_Lee_CV.pdf"
               className="group inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-primary-500 to-blue-500 hover:from-primary-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              <svg className="w-5 h-5 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Download CV
-            </a>
+              {({ blob, url, loading, error }) =>
+                loading ? (
+                  <span className="flex items-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Generating PDF...
+                  </span>
+                ) : (
+                  <span className="flex items-center">
+                    <svg className="w-5 h-5 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download CV
+                  </span>
+                )
+              }
+            </PDFDownloadLink>
           </div>
         </div>
       </div>
