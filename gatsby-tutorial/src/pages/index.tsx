@@ -193,7 +193,7 @@ const IndexPage = () => {
               </div>
 
               <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                Steve Lee
+                Stephen Lee
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 Full Stack Developer & Problem Solver

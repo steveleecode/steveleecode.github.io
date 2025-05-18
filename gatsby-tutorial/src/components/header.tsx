@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 
 const navLinks = [
   { name: 'Projects', href: '/portfolio' },
-  { name: 'Repositories', href: '/repos' },
   { name: 'CV', href: '/cv' },
   { name: 'Blog', href: '/comingSoon' },
 ];
