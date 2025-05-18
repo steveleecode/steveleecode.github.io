@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <circle cx="16" cy="16" r="16" fill="url(#gradient)" />
+  
+  <!-- Central hexagon -->
+  <path d="M16 4L24 8V20L16 24L8 20V8L16 4Z" fill="url(#glow)" />
+  
+  <!-- Orbiting elements -->
+  <circle cx="16" cy="4" r="2" fill="#fff" />
+  <circle cx="24" cy="14" r="1.5" fill="#fff" />
+  <circle cx="8" cy="14" r="1.5" fill="#fff" />
+  
+  <!-- Glowing effect -->
+  <defs>
+    <radialGradient id="gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16 16) rotate(90) scale(16)">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#1E1B4B" />
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+</svg> 
