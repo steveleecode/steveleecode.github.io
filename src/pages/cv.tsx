@@ -263,6 +263,68 @@ const SpaceshipAnimation = () => {
   );
 };
 
+// Client-side only PDF download component
+interface PDFDownloadButtonProps {
+  personalInfo: PersonalInfo;
+  skills: Skills;
+  experience: Experience[];
+  education: Education[];
+  awards: Award[];
+}
+
+const PDFDownloadButton: React.FC<PDFDownloadButtonProps> = ({ personalInfo, skills, experience, education, awards }) => {
+  const isBrowser = typeof window !== 'undefined';
+  
+  if (!isBrowser) {
+    return (
+      <div className="group inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-primary-500 to-blue-500">
+        <span className="flex items-center">
+          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Loading...
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <PDFDownloadLink
+      document={
+        <CVPDF
+          personalInfo={personalInfo}
+          skills={skills}
+          experience={experience}
+          education={education}
+          awards={awards}
+        />
+      }
+      fileName="Stephen_Lee_CV.pdf"
+      className="group inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-primary-500 to-blue-500 hover:from-primary-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+    >
+      {({ blob, url, loading, error }) =>
+        loading ? (
+          <span className="flex items-center">
+            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Generating PDF...
+          </span>
+        ) : (
+          <span className="flex items-center">
+            <svg className="w-5 h-5 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download CV
+          </span>
+        )
+      }
+    </PDFDownloadLink>
+  );
+};
+
 const CVPage = () => {
   const personalInfo = {
     name: 'Stephen Lee',
@@ -641,38 +703,13 @@ const CVPage = () => {
 
           {/* Download Button */}
           <div className="flex justify-center mt-12">
-            <PDFDownloadLink
-              document={
-                <CVPDF
-                  personalInfo={personalInfo}
-                  skills={skills}
-                  experience={experience}
-                  education={education}
-                  awards={awards}
-                />
-              }
-              fileName="Stephen_Lee_CV.pdf"
-              className="group inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-primary-500 to-blue-500 hover:from-primary-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              {({ blob, url, loading, error }) =>
-                loading ? (
-                  <span className="flex items-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Generating PDF...
-                  </span>
-                ) : (
-                  <span className="flex items-center">
-                    <svg className="w-5 h-5 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Download CV
-                  </span>
-                )
-              }
-            </PDFDownloadLink>
+            <PDFDownloadButton
+              personalInfo={personalInfo}
+              skills={skills}
+              experience={experience}
+              education={education}
+              awards={awards}
+            />
           </div>
         </div>
       </div>
