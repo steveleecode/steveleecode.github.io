@@ -252,7 +252,7 @@ const IndexPage = () => {
             </div>
             <div className="text-center mt-12">
               <Link
-                to="/repositories"
+                to="/portfolio"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-300"
               >
                 View All Projects
